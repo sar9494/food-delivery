@@ -11,10 +11,11 @@ export const LogIn = () => {
     })
 
     const handleOnChangeEmail = (e:React.ChangeEvent<HTMLInputElement>) =>{
-        setUserInfo({...useInfo,email:e.target.value})
-    }
-    const handleOnChangePassword = (e:React.ChangeEvent<HTMLInputElement>) =>{
-        setUserInfo({...useInfo,password:e.target.value})
+        if(e.target.name==='email'){
+            setUserInfo({...useInfo,email:e.target.value})
+        }else{
+            setUserInfo({...useInfo,password:e.target.value})
+        }
     }
     const letsGoHandler = () =>{
 
@@ -35,7 +36,7 @@ export const LogIn = () => {
       </div>
       <div className="flex flex-col gap-4">
         <Input placeholder="Enter your email address" name="email" onChange={handleOnChangeEmail} />
-        <Input placeholder="Password" name="password" onChange={handleOnChangePassword}/>
+        <Input placeholder="Password" name="password" onChange={handleOnChangeEmail}/>
         <a className="underline" href="">
           Forgot password ?
         </a>

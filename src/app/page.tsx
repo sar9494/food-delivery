@@ -1,13 +1,21 @@
+'use client'
+import { useState } from "react";
 import { SignUp } from "@/components/SignUp";
 import { SignUpStep2 } from "@/components/SignUpStep2";
 
 import { LogIn } from "@/components/LogIn";
 
 export default function Home() {
+  const [step,setStep] = useState(1)
   return (
     <div className="flex w-screen items-center justify-center py-5 ">
       <div className="flex w-[1300px] items-center justify-center gap-5">
-      <SignUpStep2/>
+        {
+          step==1&&<SignUp setStep={setStep}/>
+        }
+        {
+          step==2&&<SignUpStep2 setStep={setStep}/>
+        }
       {/* <LogIn/> */}
       <img src="mainImage.png" alt="" />
       </div>

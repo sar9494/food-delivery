@@ -6,12 +6,11 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export const SignUp = () => {
+export const SignUp = ({setStep}:{setStep:Function}) => {
   const [useInfo, setUserInfo] = useState({
     email: "",
   });
   const [error,setError] = useState("")
-  const [step, setStep] = useState(1);
   const router = useRouter();
 
   const handleOnChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +23,7 @@ export const SignUp = () => {
     }else if (!checkEmail.test(useInfo.email)) {
         setError("type")
     }else{
+      setError("")
         setStep(2)
     }
   };
@@ -47,11 +47,14 @@ export const SignUp = () => {
           name="email"
           onChange={handleOnChangeEmail}
         />
+        {
+        error.length!==0&&<p className="text-red-500">Invalid email. Use a format like example@email.com</p>
+        }
         <a className="underline" href="">
           Forgot password ?
         </a>
       </div>
-      <Button>Let's Go</Button>
+      <Button onClick={letsGoHandler}>Let's Go</Button>
       <div className="flex gap-2">
         <p>Already have an account?</p>
         <Link href={`/login`}>

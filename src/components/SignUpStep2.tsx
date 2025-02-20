@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export const SignUpStep2 = ({setStep}:{setStep:Function}) => {
+export const SignUpStep2 = ({ setStep }: { setStep: Function }) => {
   const [userInfo, setUserInfo] = useState({
     password: "",
     confirm: "",
@@ -37,7 +37,10 @@ export const SignUpStep2 = ({setStep}:{setStep:Function}) => {
   }, [error]);
   return (
     <div className="flex flex-col gap-6 w-[400px]">
-      <Button className="w-fit border bg-white px-3 py-3">
+      <Button
+        className="w-fit border bg-white px-3 py-3"
+        onClick={() => setStep(1)}
+      >
         <ChevronLeft color="black " />
       </Button>
       <div>

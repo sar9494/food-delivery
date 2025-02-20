@@ -1,33 +1,35 @@
-'use client'
+"use client";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { ChevronLeft } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 export const LogIn = () => {
-    const [useInfo,setUserInfo] = useState({
-        email:"",
-        password:""
-    })
+  const [useInfo, setUserInfo] = useState({
+    email: "",
+    password: "",
+  });
 
-    const handleOnChangeEmail = (e:React.ChangeEvent<HTMLInputElement>) =>{
-        if(e.target.name==='email'){
-            setUserInfo({...useInfo,email:e.target.value})
-        }else{
-            setUserInfo({...useInfo,password:e.target.value})
-        }
+  const handleOnChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.name === "email") {
+      setUserInfo({ ...useInfo, email: e.target.value });
+    } else {
+      setUserInfo({ ...useInfo, password: e.target.value });
     }
-    const letsGoHandler = () =>{
-
-    }
-    useEffect(()=>{
-        console.log(useInfo);
-    },[useInfo])
+  };
+  const letsGoHandler = () => {};
+  useEffect(() => {
+    console.log(useInfo);
+  }, [useInfo]);
   return (
     <div className="flex flex-col gap-6 w-[400px]">
-      <Button className="w-fit border bg-white px-4 py-6">
-        <ChevronLeft color="black " />
-      </Button>
+      <Link href={"/"}>
+        <Button className="w-fit border bg-white px-4 py-6">
+          <ChevronLeft color="black " />
+        </Button>
+      </Link>
+
       <div>
         <p>
           <b>Log in</b>
@@ -35,8 +37,16 @@ export const LogIn = () => {
         <p>Log in to enjoy your favorite dishes.</p>
       </div>
       <div className="flex flex-col gap-4">
-        <Input placeholder="Enter your email address" name="email" onChange={handleOnChangeEmail} />
-        <Input placeholder="Password" name="password" onChange={handleOnChangeEmail}/>
+        <Input
+          placeholder="Enter your email address"
+          name="email"
+          onChange={handleOnChangeEmail}
+        />
+        <Input
+          placeholder="Password"
+          name="password"
+          onChange={handleOnChangeEmail}
+        />
         <a className="underline" href="">
           Forgot password ?
         </a>

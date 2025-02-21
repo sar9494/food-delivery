@@ -29,7 +29,6 @@ export const LogIn = () => {
           <ChevronLeft color="black " />
         </Button>
       </Link>
-
       <div>
         <p>
           <b>Log in</b>
